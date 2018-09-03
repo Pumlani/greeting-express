@@ -3,10 +3,9 @@ body{
   font-family: "Helvetica Neue",Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  color: grey;
 }
 .container {
-    background-color: pink;
+    background-color: white;
 }
 button{
   border-radius: 30%;
@@ -18,8 +17,6 @@ button{
   width: 80%;
   margin: 15px;
   padding:15px;
-
-
   background: white;
 
 

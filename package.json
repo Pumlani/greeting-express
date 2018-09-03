@@ -16,5 +16,9 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^4.0.0"
+  },
+  "dependencies": {
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6"
   }
 }

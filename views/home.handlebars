@@ -3,58 +3,61 @@
 
 <body>
     <div class="container">
+        <div class="row">
+            <div class="col-8 ">
 
-        <center>
-            <div class="row">
-                <div class="col-12 ">
+                <form action="/greetings" method="POST">
+                    <input type="text" name="textBox" placeholder="enter a name to greet" class="takesText"></div>
 
-                    <form action="/greetings" method="POST">
-                        <input type="text" name="textBox" placeholder="enter a name to greet" class="takesText">
-
-                </div>
+            <div class="col-4">
+                <div>Counter : <span id="counting">{{counter}}</span> </div>
+                <button class="button-primary  greetBtn" type="submit" name="button"><strong>Greet</strong></button>
             </div>
+        </div>
 
-            <div class="row">
-                <div class "col-12 threeRadios">
 
-                    <input type="radio" name="language" class="languageRadio" value="english">
-                    <span class="label-body">English</span>
-                    <input type="radio" name="language" class="languageRadio" value="xhosa">
-                    <span class="label-body">Xhosa</span>
-                    <input type="radio" name="language" class="languageRadio" value="afrikaans">
-                    <span class="label-body">Afrikaans</span>
-                    <div class="col-4">
-                        <div>Counter : <span id="counting">{{counter}}</span> </div>
-                        <button class="button-primary  greetBtn" type="submit" name="button"><strong>Greet</strong></button>
-                    </div>
+        <div class="row">
+            <div class "col-8 threeRadios">
+                <input type="radio" name="language" class="languageRadio" value="english">
+                <span class="label-body">English</span>
+                <input type="radio" name="language" class="languageRadio" value="xhosa">
+                <span class="label-body">Xhosa</span>
+                <input type="radio" name="language" class="languageRadio" value="afrikaans">
+                <span class="label-body">Afrikaans</span>
 
-                </div>
             </div>
+            <div class="col-4"></div>
+        </div>
+
+        </form>
+
+        <div class="row">
+
+            <form action="/resets" method="POST">
+
+                <div class="col-12">
+                    <button class="button-primary  resetBtn" type="submit" name="button"><strong>Reset</strong></button>
+                </div>
 
             </form>
+        </div>
 
-            <div class="row">
+        <div class="row">
+            <div class="col-12">
 
-                <form action="/resets" method="POST">
-
-                    <div class="col-12">
-                        <button class="button-primary  resetBtn" type="submit" name="button"><strong>Reset</strong></button>
-                    </div>
-
-                </form>
+                <h2 class="displayOut"><span>{{greeted}}</span></h2>
             </div>
 
-            <div class="row">
-                <div class="col-12">
-
-                    <h2 class="displayOut"><span>{{greeted}}</span></h2>
-
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{#if messages.info}}
+                <div class="entry">
+                    <h1> {{messages.info}}</h1>
                 </div>
+                {{/if}}
             </div>
-
-        </center>
-
-
+        </div>
     </div>
 </body>
 

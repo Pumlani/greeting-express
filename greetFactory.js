@@ -2,33 +2,25 @@ module.exports = function (storage) {
 
   var namesGreeted = storage || {}
 
-  // function reset() {
-  //   var count = 0;
-  //   var namesGreeted = {};
-  // }
-
   function greet(name, language) {
-    if (name != "") {
 
-    }
+    if (name !== "" && language !== undefined) {
 
-    if (namesGreeted[name] === undefined) {
-      namesGreeted[name] = 0;
-    }
-    if (language != "") {
+      if (namesGreeted[name] === undefined) {
+        namesGreeted[name] = 0;
+      }
+      //returning the greetes name with a chosen language
+      if (language === 'xhosa') {
+        return 'Molo ' + name
+      }
 
-    }
+      if (language === 'english') {
+        return 'Hello ' + name
+      }
 
-    if (language === 'xhosa') {
-      return 'Molo ' + name
-    }
-
-    if (language === 'english') {
-      return 'Hello ' + name
-    }
-
-    if (language === 'afrikaans') {
-      return 'Hallo ' + name
+      if (language === 'afrikaans') {
+        return 'Hallo ' + name
+      }
     }
   }
 
