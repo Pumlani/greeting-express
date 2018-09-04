@@ -69,16 +69,17 @@ app.post('/greetings', function (req, res) {
         counter
     })
 })
-// app.post('/resets', function (req, res) {
-//     let counter = GreetFactory.count();
-//     let reset = {
-//         resetB: GreetFactory.reset()
-//     };
-//     res.render('home', {
-//         reset,
-//         counter
-//     });
-// });
+app.post('/resetBtn', function (req, res) {
+    let counter = GreetFactory.count();
+    let reset = {
+        resetB: GreetFactory.reset()
+    };
+
+    res.render('home', {
+        reset,
+        counter
+    });
+});
 
 // running on this port number
 let PORT = process.env.PORT || 3011

@@ -1,6 +1,15 @@
 module.exports = function (storage) {
 
   var namesGreeted = storage || {}
+  // let name = '';
+  // let language = '';
+
+  function reset() {
+    name = '';
+    language = '';
+    namesGreeted = {};
+    count = 0;
+  }
 
   function greet(name, language) {
 
@@ -37,7 +46,7 @@ module.exports = function (storage) {
   return {
     names,
     count,
-    greet
-    // reset
+    greet,
+    reset
   }
 };
