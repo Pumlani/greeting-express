@@ -1,6 +1,6 @@
-module.exports = function (storage) {
+module.exports = function (pool) {
 
-  var namesGreeted = storage || {}
+  // var namesGreeted = storage || {}
   // let name = '';
   // let language = '';
 
@@ -11,13 +11,19 @@ module.exports = function (storage) {
     count = 0;
   }
 
-  function greet(name, language) {
+  async function greet(name, language) {
+
+    let results = await pool.query('SELECT * FROM greetedUser where userName=$1', [name]);
+
+    if (name !== undefined && name !== '') {
+      await pool.query('insert into greetedUser (userName, counter) values ($1, $2)', [name, 1]);
+    }
 
     if (name !== "" && language !== undefined) {
 
-      if (namesGreeted[name] === undefined) {
-        namesGreeted[name] = 0;
-      }
+      // if (namesGreeted[name] === undefined) {
+      //   namesGreeted[name] = 0;
+      // }
       //returning the greetes name with a chosen language
       if (language === 'xhosa') {
         return 'Molo ' + name
@@ -33,11 +39,14 @@ module.exports = function (storage) {
     }
   }
 
-  function count() {
-    return Object.keys(namesGreeted).length;
+  async function count() {
+    let results = await pool.query('SELECT * FROM greetedUser');
+    console.log(results)
+    return results.rowCount;
   }
 
-  function names() {
+  async function names() {
+    let results = await pool.query('SELECT * FROM greetedUser');
 
     return namesGreeted;
 

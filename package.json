@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "express-flash": "0.0.2",
-    "express-session": "^1.15.6"
+    "express-session": "^1.15.6",
+    "pg": "^7.4.3"
   }
 }
