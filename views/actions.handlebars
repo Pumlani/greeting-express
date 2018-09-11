@@ -1,0 +1,31 @@
+<h2> Greeted Names </h2>
+
+<div class="likedPage">
+
+    <form action="/" method="GET">
+        <div class="row">
+            <div class="col-8">
+                <button class="home">Home</button>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="row">
+
+        <div class="col-12 myTable">
+            <table>
+                <tr>
+                    <th>Greeted Names</th>
+                    <th>Number Of Names</th>
+                </tr {{#each greetedUser}}>
+                <tr>
+                    <td>{{UserName}}</td>
+                    <td>{{count}}</td>
+                </tr>
+                {{/each}}
+
+            </table>
+        </div>
+    </div>
+</div>
