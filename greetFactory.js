@@ -1,13 +1,27 @@
 module.exports = function (pool) {
-  //  
+  //  use strict mode
+
+  async function count() {
+    //getting the number of names entered on our table
+    let seeTable = await pool.query('SELECT FROM greetedUser');
+    let namesCounted = seeTable.rows
+    return namesCounted.length;
+  }
+
+  async function names() {
+    //names on that table
+    let namesGreeted = await pool.query('SELECT * FROM greetedUser');
+    return namesGreeted.rows;
+  }
+
   async function greet(name, language) {
-    //name format
-    // name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+    //making the first letteer upper case
+    name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
     if (name !== '' && language !== undefined) {
 
       let result = await pool.query('SELECT * FROM greetedUser WHERE userName=$1', [name]);
-      // console.log("after select");
+      console.log("after select");
 
 
       if (result.rowCount === 0) {
@@ -30,25 +44,16 @@ module.exports = function (pool) {
       }
 
       if (language === 'afrikaans') {
-        return 'Hallo ' + name
+        return 'More ' + name
+      }
+
+      if (language === 'seSotho') {
+        return 'Dumela ' + name
       }
     }
   }
 
-  async function count() {
 
-    //getting the number of names entered on our table
-    let results = await pool.query('SELECT FROM greetedUser');
-    let namesCounted = results.rows
-    return namesCounted.length;
-  }
-
-  async function names() {
-
-    //getting the names entered on our table
-    let namesGreeted = await pool.query('SELECT FROM greetedUser');
-    return namesGreeted.rows;
-  }
 
 
   async function resetBn() {

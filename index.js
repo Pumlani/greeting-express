@@ -25,7 +25,7 @@ const pool = new Pool({
     ssl: useSSL
 });
 //factory function instance
-let greetingsObject = greetFactory(pool)
+let greetingsInstance = greetFactory(pool)
 
 // configuring handlebars as middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -33,6 +33,7 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({
     extended: false
 }))
+
 // initialise session middleware in which flash-express depends on it
 app.use(session({
     secret: '<this is my long string that is used for session in http>',
@@ -49,7 +50,7 @@ app.use(express.static('public'))
 app.get('/', async function (req, res, next) {
     try {
         let countObject = {
-            count: await greetingsObject.count()
+            count: await greetingsInstance.count()
         }
         //sending data out of the server
         res.render('home', {
@@ -76,11 +77,11 @@ app.post('/greetings', async function (req, res, next) {
             req.flash('info', 'Please select a language before you greet!')
         } else {
             let greeting = {
-                greet: await greetingsObject.greet(name, language),
-                count: await greetingsObject.count()
+                greet: await greetingsInstance.greet(name, language),
+                count: await greetingsInstance.count()
             }
 
-            // console.log(await greetingsObject.greet(name, language));
+            console.log(greeting);
             //sending data out of the server
             res.render('home', {
                 greeting
@@ -93,14 +94,58 @@ app.post('/greetings', async function (req, res, next) {
         next(error);
     }
 });
+// app.get("greetings/:name/:language", async function (req, res, next) {
+//     try {
+//         let name = req.body.textBox;
+//         let language = req.body.language;
 
-//the reset POST route 
+//         res.render('home', {
+//             greeting: await greetingsInstance.greet(name, language),
+//             counter: await greetingsInstance.count()
+//         });
+
+//     } catch (error) {
+//         next(error);
+//     }
+// });
+
+// app.get('/greeted', async function (req, res, next) {
+//     try {
+
+//         res.render('actions', {
+//             greet: await greetingsInstance.names()
+//         });
+
+
+//     } catch (error) {
+//         next(error);
+//     }
+// });
+app.get('/greeted', async function (req, res, next) {
+    try {
+        let result = await pool.query('SELECT * FROM greetedUser');
+        let greeted = result.rows
+        console.log(greeted)
+        let counter = await greetingsInstance.count()
+
+        res.render('actions', {
+            greeted,
+            counter
+        });
+
+
+    } catch (error) {
+        next(error);
+    }
+});
+
+
+//the reset POST route
 app.post('/resetBn', async function (req, res, next) {
     try {
         let reset = {
-            resetB: await greetingsObject.resetBn()
+            resetB: await greetingsInstance.resetBn()
         };
-        // let reset = await greetingsObject.resetBtn()
         res.render('home', {
             reset
         });
