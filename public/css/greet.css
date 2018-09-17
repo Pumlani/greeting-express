@@ -1,20 +1,63 @@
-body{
+/* body{
   width: 100%;
   font-family: "Helvetica Neue",Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  color: grey;
+  background-color: burlywood;
 }
-.textBox {
-    padding: 0.75em;
-    border-radius: 0.5em;
-    border: 1px solid #ddd;
-    height: auto;
-    margin-bottom: 1em;
-  }
+*{
+  padding: 0;
+  margin: 0;
+}
+.grid {
+    /* background-color: pink; */
+/* 
+}
+.button-primary
+{
+    margin-top:30px;
+    margin-left: 440px;
+}
+.resetBtn {
+  border: 1px solid white;
+  padding: 10px 20px;
+  background-color: orangered;
+  text-decoration: none;
+  margin-right: 5px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.greetBtn {
+  border: 1px solid white;
+  padding: 10px 20px;
+  background-color: orangered;
+  text-decoration: none;
+  margin-right: 5px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.takesText
+{
+    font-size: 50px;
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 40px;
+    
   
-button{
-  border-radius: 30%;
-  width: 30%;
-  height: 30%;
 }
+.row{
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+.languageRadio
+{
+  display: inline-block;
+    /* margin-top: 200px; */
+    /* margin-left: 150px;
+    padding-top: 20px;
+}
+.displayOut{
+  text-align: center;
+}  */

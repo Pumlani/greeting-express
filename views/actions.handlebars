@@ -1,13 +1,18 @@
 <div class="row">
-    <form action="home" method="POST">
+    <form action="/" method="get">
 
         <h2> Greeted Names </h2>
 
+        <button class="button-primary  HomeBtn" type="submit" name="button"><strong>Home</strong></button>
+    </form>
+
+    <form action="clear" method="post">
+        <button class="button-primary  eraseBtn" type="submit" name="button"><strong>Clear</strong></button>
         <table>
             <tr>
-                <th>Greeted Names</th>
+                <th>Names</th>
 
-                <th>Number Of Names</th>
+                <th>Times</th>
             </tr>
 
             {{#each greeted}}
@@ -20,4 +25,5 @@
 
         </table>
     </form>
+
 </div>

@@ -1,5 +1,5 @@
-create table greetedUser(
+create table greeteduser(
 	id serial not null primary key,
-	UserName text not null,
+	Username text not null,
     counter int default 0
 );

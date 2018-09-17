@@ -2,25 +2,20 @@
 <html>
 
 <body>
-    <div class="container">
-
-
-
-        <div class="row">
-
-        </div>
+    <div class="grid">
 
         <div class="row">
             <form action="/greetings" method="POST">
-                <div class="col-8">
+
+                <div class="MyTextbox">
 
                     <input type="text" name="textBox" placeholder="  Please enter a name" class="takesText">
                 </div>
 
-                <div class="col-6">
+                <div class="MyRadioBtn">
 
-                    <input type="radio" name="language" class="languageRadio" value="english">
-                    <span class="label-body">English</span>
+                    {{!-- <input type="radio" name="language" class="languageRadio" value="english">
+                    <span class="label-body">English</span> --}}
                     <input type="radio" name="language" class="languageRadio" value="xhosa">
                     <span class="label-body">IsiXhosa</span>
                     <input type="radio" name="language" class="languageRadio" value="afrikaans">
@@ -28,19 +23,21 @@
                     <input type="radio" name="language" class="languageRadio" value="seSotho">
                     <span class="label-body">seSotho</span>
 
-                    <button class="button-primary  greetBtn" type="submit" name="button"><strong>Greet</strong></button>
+                    {{!-- <button class="button-primary  greetBtn" type="submit" name="button"><strong>Greet</strong></button>
+                    --}}
                     {{!-- <div>Counter : <span id="counting">{{greeting.count}}</span> </div> --}}
                 </div>
+                <button class="button-primary  greetBtn" type="submit" name="button"><strong>Greet</strong></button>
             </form>
         </div>
+
+
 
         {{!--
         <form action="/greetings" method="POST"> </form>--}}
 
-        <div class="col-4">
+        <div class="MyTableLink">
 
-            <h2>View Input</h2>
-            <hr>
             <table>
                 <tr>
                     <td>
@@ -51,13 +48,11 @@
                     </td>
                 </tr>
             </table>
-        </div>
+            </dsiv>
 
-
-        <div class="row">
             <form action="/resetBn" method="POST">
 
-                <div class="col-8">
+                <div class="MyResetBtn">
 
                     <button class="button-primary  resetBtn" type="submit" name="button"><strong>Reset</strong></button>
                     {{!-- <button class="button-primary  resetBtn" type="submit" name="button"><strong>Reset</strong></button>
@@ -65,22 +60,16 @@
                 </div>
             </form>
 
-        </div>
+            <div class="MyDisplay">
 
-        <div class="row">
-            <div class="col-8">
-
-                <h2 class="displayOut"><span>{{greeting.greet}}</span></h2>
-            </div>
-            <div class="col-4">
-                <div>Counter : <span id="counting">{{greeting.count}}</span> </div>
+                <h2 class="displayOut"><span>{{greet}}</span></h2>
             </div>
 
-        </div>
+            <div class="MyCounter">
+                <div>Counter : <span id="counting">{{count}}</span> </div>
+            </div>
 
-        <div class="row">
-
-            <div class="col-12">
+            <div class="MyErrorMsg">
                 {{#if messages.info}}
                 <div class="entry" id="errorInfo">
                     <p>
@@ -89,10 +78,9 @@
                 </div>
                 {{/if}}
             </div>
+
+
         </div>
-
-
-    </div>
 </body>
 
 </html>
