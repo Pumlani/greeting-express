@@ -24,6 +24,15 @@ describe('The basic database web app tests', function () {
 
 
     });
+    it('should greet a person in Afrikaans language.', async function () {
+
+        var greetingsObj = greetingsfactory(pool);
+        var greeting = await greetingsObj.greet('Monde', 'afrikaans')
+
+        assert.equal(greeting, 'More Monde')
+
+
+    });
 
     it('should greet a person in Xhosa language.', async function () {
 
