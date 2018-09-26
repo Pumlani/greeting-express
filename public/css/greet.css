@@ -1,63 +1,61 @@
-/* body{
+body
+{
   width: 100%;
   font-family: "Helvetica Neue",Arial, sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  background-color: burlywood;
+  background-color:greenyellow;
+
 }
-*{
+
+*
+{
   padding: 0;
   margin: 0;
 }
-.grid {
-    /* background-color: pink; */
-/* 
-}
-.button-primary
+
+.MyCounter
 {
-    margin-top:30px;
-    margin-left: 440px;
-}
-.resetBtn {
-  border: 1px solid white;
-  padding: 10px 20px;
-  background-color: orangered;
-  text-decoration: none;
-  margin-right: 5px;
-  font-size: 13px;
-  text-transform: uppercase;
-}
-.greetBtn {
-  border: 1px solid white;
-  padding: 10px 20px;
-  background-color: orangered;
-  text-decoration: none;
-  margin-right: 5px;
-  font-size: 13px;
-  text-transform: uppercase;
+  color: bisque;
 }
 .takesText
 {
-    font-size: 50px;
-    text-align: center;
-    margin-top: 200px;
-    margin-left: 40px;
-    
-  
-}
-.row{
-  max-width: 1200px;
-  margin: auto;
-}
-
-
-.languageRadio
-{
-  display: inline-block;
-    /* margin-top: 200px; */
-    /* margin-left: 150px;
-    padding-top: 20px;
-}
-.displayOut{
+  font-size: 20px;
   text-align: center;
-}  */
+  margin-top: 230px;
+  margin-left: 500px;
+}
+.MyRadioBtn
+{
+  margin-top: 23px;
+  margin-left: 500px;
+  color: blanchedalmond;
+}
+.greetBtn
+{
+  background: aqua;
+  border-radius: 40px;
+  height: 40px;
+  width: 60px;
+  margin-left: 440px;
+}
+.resetBtn
+{
+  background: red;
+  border-radius: 40px;
+  height: 40px;
+  width: 60px;
+  margin-top: 0px;
+  margin-left:440px;
+}
+h2
+{
+  float: center;
+  margin: 10px;
+  color: blue;
+  margin-left:440px;
+}
+.MyErrorMsg
+{
+  color: red;
+}

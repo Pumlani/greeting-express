@@ -51,12 +51,12 @@ app.get('/', async function (req, res, next) {
 
     try {
 
-        let countObject = {
-            count: await greetingsInstance.count()
-        }
+
+
+
         //sending data out of the server
         res.render('home', {
-            countObject
+            count: await greetingsInstance.count()
         });
     } catch (error) {
         next(error);

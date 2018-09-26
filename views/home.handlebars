@@ -3,38 +3,30 @@
 
 <body>
     <div class="grid">
+        <form action="/greetings" method="POST">
 
-        <div class="row">
-            <form action="/greetings" method="POST">
+            <div class="MyTextbox">
 
-                <div class="MyTextbox">
+                <input type="text" name="textBox" placeholder="  Please enter a name" class="takesText">
+            </div>
 
-                    <input type="text" name="textBox" placeholder="  Please enter a name" class="takesText">
-                </div>
+            <div class="MyRadioBtn">
 
-                <div class="MyRadioBtn">
+                {{!-- <input type="radio" name="language" class="languageRadio" value="english">
+                <span class="label-body">English</span> --}}
+                <input type="radio" name="language" class="languageRadio" value="xhosa">
+                <span class="label-body">IsiXhosa</span>
+                <input type="radio" name="language" class="languageRadio" value="afrikaans">
+                <span class="label-body">Afrikaans</span>
+                <input type="radio" name="language" class="languageRadio" value="seSotho">
+                <span class="label-body">seSotho</span>
+            </div>
+            <button class="button-primary  greetBtn" type="submit" name="button"><strong>GREET</strong></button>
+        </form>
+        <div class="MyDisplay">
 
-                    {{!-- <input type="radio" name="language" class="languageRadio" value="english">
-                    <span class="label-body">English</span> --}}
-                    <input type="radio" name="language" class="languageRadio" value="xhosa">
-                    <span class="label-body">IsiXhosa</span>
-                    <input type="radio" name="language" class="languageRadio" value="afrikaans">
-                    <span class="label-body">Afrikaans</span>
-                    <input type="radio" name="language" class="languageRadio" value="seSotho">
-                    <span class="label-body">seSotho</span>
-
-                    {{!-- <button class="button-primary  greetBtn" type="submit" name="button"><strong>Greet</strong></button>
-                    --}}
-                    {{!-- <div>Counter : <span id="counting">{{greeting.count}}</span> </div> --}}
-                </div>
-                <button class="button-primary  greetBtn" type="submit" name="button"><strong>Greet</strong></button>
-            </form>
+            <h2 class="displayOut"><span>{{greet}}</span></h2>
         </div>
-
-
-
-        {{!--
-        <form action="/greetings" method="POST"> </form>--}}
 
         <div class="MyTableLink">
 
@@ -48,39 +40,32 @@
                     </td>
                 </tr>
             </table>
-            </dsiv>
-
-            <form action="/resetBn" method="POST">
-
-                <div class="MyResetBtn">
-
-                    <button class="button-primary  resetBtn" type="submit" name="button"><strong>Reset</strong></button>
-                    {{!-- <button class="button-primary  resetBtn" type="submit" name="button"><strong>Reset</strong></button>
-                    --}}
-                </div>
-            </form>
-
-            <div class="MyDisplay">
-
-                <h2 class="displayOut"><span>{{greet}}</span></h2>
-            </div>
-
-            <div class="MyCounter">
-                <div>Counter : <span id="counting">{{count}}</span> </div>
-            </div>
-
-            <div class="MyErrorMsg">
-                {{#if messages.info}}
-                <div class="entry" id="errorInfo">
-                    <p>
-                        {{messages.info}}
-                    </p>
-                </div>
-                {{/if}}
-            </div>
-
-
         </div>
+
+        <div class="MyCounter">
+            <div>Counter : <span id="counting">{{count}}</span> </div>
+        </div>
+
+        <form action="/resetBn" method="POST">
+
+            <div class="MyResetBtn">
+                <button class="button-primary  resetBtn" type="submit" name="button"><strong>RESET</strong></button>
+            </div>
+
+        </form>
+
+        <div class="MyErrorMsg">
+            {{#if messages.info}}
+            <div class="entry" id="errorInfo">
+                <p>
+                    {{messages.info}}
+                </p>
+            </div>
+            {{/if}}
+        </div>
+
+
+    </div>
 </body>
 
 </html>

@@ -1,91 +1,85 @@
 let assert = require("assert");
 let greetingsfactory = require("../greetFactory");
+const pg = require("pg");
+const Pool = pg.Pool;
 
+// we are using a special test database for the tests
+const connectionString = process.env.DATABASE_URL || 'postgres://coder:pg123@localhost:5432/greetingsData';
 
-describe('The greetings function Tests', function () {
-    it('should greet a person in Afrikaans language.', function () {
+const pool = new Pool({
+    connectionString
+});
+describe('The basic database web app tests', function () {
 
-        var greetingsObj = greetingsfactory();
-        var name = "Pumlani";
-        var lang = 'afrikaans';
+    beforeEach(async function () {
+        // clean the tables before each test run
+        await pool.query("delete from greeteduser;");
+    });
+    it('should greet a person in English language.', async function () {
 
-        assert.equal(greetingsObj.greet(name, lang), 'Hallo Pumlani')
+        var greetingsObj = greetingsfactory(pool);
+        var greeting = await greetingsObj.greet('Monde', 'english')
+
+        assert.equal(greeting, 'Hello Monde')
+
 
     });
 
-    it('should greet a person in English language.', function () {
+    it('should greet a person in Xhosa language.', async function () {
 
-        var greetingsObj = greetingsfactory();
-        var name = 'Monde';
-        var lang = 'english';
+        var greetingsObj = greetingsfactory(pool);
+        var greeting = await greetingsObj.greet('lihle', 'xhosa')
 
-        assert.equal(greetingsObj.greet(name, lang), 'Hello Monde')
-
+        assert.equal(greeting, 'Molo Lihle')
 
     });
 
+    it('should return the number of people that have been counted.', async function () {
 
-    it('should greet a person in Xhosa language.', function () {
+        var greetingsObj = greetingsfactory(pool);
 
-        var greetingsObj = greetingsfactory();
-        var name = 'Inam';
-        var lang = 'xhosa';
 
-        assert.equal(greetingsObj.greet(name, lang), 'Molo Inam')
+        await greetingsObj.greet('lihle', 'xhosa');
+        await greetingsObj.greet('amanda', 'xhosa');
 
-    });
-    it('should return the number of people that have been counted.', function () {
+        let greetCount = await greetingsObj.count();
 
-        var greetingsObj = greetingsfactory();
-
-        greetingsObj.greet('Pumlan');
-        greetingsObj.greet('Monde');
-
-        assert.equal(greetingsObj.count(), 2)
+        assert.equal(greetCount, 2)
 
     });
+    it('shouldn not increase the counter if the name has been greeted before', async function () {
 
-    it('should increase the counter if the name not been greeted once.', function () {
+        var greetingsObj = greetingsfactory(pool);
 
-        var greetingsObj = greetingsfactory();
+        await greetingsObj.greet('Hello', 'Ludwe');
+        await greetingsObj.greet('Hello', 'ludwe');
+        let greetCount = await greetingsObj.count();
 
-        greetingsObj.greet('Pumlan');
-        greetingsObj.greet('Monde');
-        assert.equal(greetingsObj.count(), 2)
 
-        greetingsObj.greet('Unathi');
-        greetingsObj.greet('Anda');
-        greetingsObj.greet('Aphiwe');
-        greetingsObj.greet('Lisa');
-        greetingsObj.greet('Inam');
-        assert.equal(greetingsObj.count(), 7)
+        assert.equal(greetCount, 1)
 
     });
-    it('should not increase the counter if the name been greeted.', function () {
 
-        var greetingsObj = greetingsfactory();
+    it('should not increase the counter if the name has been greeted before.', async function () {
 
-        greetingsObj.greet('Pumlani');
-        greetingsObj.greet('Monde');
-        assert.equal(greetingsObj.count(), 2)
+        var greetingsObj = greetingsfactory(pool);
 
-        greetingsObj.greet('Inam');
-        greetingsObj.greet('Unathi');
-        greetingsObj.greet('Anda');
-        greetingsObj.greet('Monde');
-        greetingsObj.greet('Pumlani');
+        await greetingsObj.greet('More', 'Pumlani');
+        await greetingsObj.greet('Hello', 'Monde');
+        let greetCount = await greetingsObj.count();
+        assert.equal(greetCount, 2)
 
-        assert.equal(greetingsObj.count(), 5)
+        await greetingsObj.greet('Molo', 'Inam');
+        await greetingsObj.greet('Molo', 'Monde');
+        await greetingsObj.greet('Hello', 'Pumlani');
+        greetCount = await greetingsObj.count();
+
+        assert.equal(greetCount, 3)
 
     });
-    it('should return the names as keys and 0 as a key value.', function () {
 
-        var greetingsObj = greetingsfactory();
-
-        greetingsObj.greet('PUMLANI');
-        greetingsObj.greet('MASEBE');
-
-        assert.deepEqual(({ PUMLANI: 0, MASEBE: 0 }), greetingsObj.names());
-    });
+    after(function () {
+        pool.end();
+    })
 
 });

@@ -3,22 +3,23 @@
 
         <h2> Greeted Names </h2>
 
-        <button class="button-primary  HomeBtn" type="submit" name="button"><strong>Home</strong></button>
+        <button class="button-primary  HomeBtn" type="submit" name="button"><strong>Back</strong></button>
     </form>
 
     <form action="clear" method="post">
         <button class="button-primary  eraseBtn" type="submit" name="button"><strong>Clear</strong></button>
+
         <table>
             <tr>
                 <th>Names</th>
-
+                <th></th>
                 <th>Times</th>
             </tr>
 
             {{#each greeted}}
             <tr>
                 <td>{{username}}</td>
-
+                <td></td>
                 <td>{{counter}}</td>
             </tr>
             {{/each}}
