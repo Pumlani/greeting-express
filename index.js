@@ -1,5 +1,3 @@
-
-
 const express = require('express');
 const exphbs = require('express-handlebars');
 const flash = require('express-flash');
@@ -48,12 +46,7 @@ app.use(express.static('public'))
 
 //GET route -home screen
 app.get('/', async function (req, res, next) {
-
     try {
-
-
-
-
         //sending data out of the server
         res.render('home', {
             count: await greetingsInstance.count()
@@ -63,6 +56,38 @@ app.get('/', async function (req, res, next) {
     }
 
 })
+app.get('/greeted', async function (req, res, next) {
+    try {
+        let result = await pool.query('SELECT * FROM greeteduser');
+        let greeted = result.rows
+
+        let counter = await greetingsInstance.count()
+
+        res.render('Greeted', {
+            greeted,
+            counter
+        });
+
+
+    } catch (error) {
+        next(error);
+    }
+});
+app.get('/counter/:name', async function (req, res, next) {
+    try {
+        let name = req.params.name;
+
+        let counter = await greetingsInstance.oneUser(name)
+
+        res.render('counter', {
+            counter
+        });
+
+
+    } catch (error) {
+        next(error);
+    }
+});
 
 //the greetings POST route which sends data to the server
 app.post('/greetings', async function (req, res, next) {
@@ -90,24 +115,7 @@ app.post('/greetings', async function (req, res, next) {
         next(error);
     }
 });
-app.get('/greeted', async function (req, res, next) {
-    try {
-        let result = await pool.query('SELECT * FROM greeteduser');
-        let greeted = result.rows
 
-        console.log(greeted)
-        let counter = await greetingsInstance.count()
-
-        res.render('actions', {
-            greeted,
-            counter
-        });
-
-
-    } catch (error) {
-        next(error);
-    }
-});
 app.post('/clear', async function (req, res, next) {
     try {
         //deleting all the data entered on our database table
@@ -117,7 +125,7 @@ app.post('/clear', async function (req, res, next) {
         console.log(greeted)
         let erase = await greetingsInstance.resetBn()
 
-        res.render('actions', {
+        res.render('Greeted', {
             greeted,
             erase
         });
@@ -127,9 +135,6 @@ app.post('/clear', async function (req, res, next) {
         next(error);
     }
 });
-
-
-//the reset POST route
 app.post('/', async function (req, res, next) {
 
     res.redirect('home');

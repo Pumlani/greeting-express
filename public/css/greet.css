@@ -31,15 +31,20 @@ body
   margin-left: 500px;
   color: blanchedalmond;
 }
-.greetBtn
+.button
+{
+    margin-top:30px;
+    margin-left: 440px;
+}
+#buttonOne
 {
   background: aqua;
   border-radius: 40px;
   height: 40px;
   width: 60px;
-  margin-left: 440px;
+  /* margin-left: 440px; */
 }
-.resetBtn
+#buttonTwo
 {
   background: red;
   border-radius: 40px;

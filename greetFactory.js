@@ -59,10 +59,16 @@ module.exports = function (pool) {
     let namesGreeted = await pool.query('SELECT * FROM greeteduser');
     return namesGreeted.rows;
   }
+  async function oneUser(name) {
+
+    let nameGreeted = await pool.query('SELECT * FROM greeteduser where username=$1', [name]);
+    return nameGreeted.rows[0];
+  }
 
 
 
   return {
+    oneUser,
     names,
     count,
     greet,
