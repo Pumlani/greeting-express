@@ -9,8 +9,3 @@ node_js:
 before_script:
   - psql -c 'create database greeted_users;' -U postgres
   - psql -U postgres -d greeted_users -a -f table.sql 
-
-addons:
-    apt:
-    packages:
-    - postgresql-server-dev-9.2
