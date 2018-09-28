@@ -1,11 +1,11 @@
 language: node_js
 
-env:
-     - DB=postgresql://postgres@localhost:5432/greeted_users
-     
 node_js:  
    - "8.9.4"
-        
+
+env:
+     - DB=postgresql://postgres@localhost:5432/greetingsData
+         
 before_script:
-  - psql -c 'create database greeted_users;' -U postgres
-  - psql -U postgres -d greeted_users -a -f table.sql 
+  - psql -c 'create database greetingsData;' -U postgres
+  - psql -U postgres -d greetingsData -a -f database.sql 
