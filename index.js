@@ -5,7 +5,6 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const pg = require("pg");
 let greetFactory = require('./greetFactory.js');
-
 const app = express();
 const Pool = pg.Pool;
 
