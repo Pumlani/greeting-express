@@ -1,16 +1,16 @@
-language: node_js
-
-node_js:  
-   - "8.9.4"
+        language: node_js
 
 env:
-     - DATABASE_URL=postgresql://postgres@localhost:5432/greetings_data
-         
+     - DB=postgresql://postgres@localhost:5432/greetings_data
+     
+node_js:  
+        - "8.9.4"
+        
 before_script:
-  - psql -c 'create database greetings_data;' -U postgres
+  - psql -c 'create database  greetings_data;' -U postgres
   - psql -U postgres -d greetings_data -a -f database.sql
 
-  addons:
+addons:
     apt:
-      packages:
-        -postgresql-server-9.2
+    packages:
+    - postgresql-server-dev-9.2
