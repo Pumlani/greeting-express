@@ -72,7 +72,6 @@ describe('The basic database web app tests', function () {
     it('should not increase the counter if the name has been greeted before.', async function () {
 
         var greetingsObj = greetingsfactory(pool);
-
         await greetingsObj.greet('More', 'Pumlani');
         await greetingsObj.greet('Hello', 'Monde');
         let greetCount = await greetingsObj.count();
@@ -84,7 +83,6 @@ describe('The basic database web app tests', function () {
         greetCount = await greetingsObj.count();
 
         assert.equal(greetCount, 3)
-
     });
 
     after(function () {
