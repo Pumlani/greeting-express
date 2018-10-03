@@ -9,6 +9,7 @@ let greetFactory = require('./greetFactory.js');
 const app = express();
 const Pool = pg.Pool;
 
+
 // should we use a SSL connection
 let useSSL = false;
 let local = process.env.LOCAL || false;
@@ -68,7 +69,6 @@ app.get('/greeted', async function (req, res, next) {
             counter
         });
 
-
     } catch (error) {
         next(error);
     }
@@ -121,8 +121,6 @@ app.post('/clear', async function (req, res, next) {
         //deleting all the data entered on our database table
         let clear = await pool.query('DELETE FROM greeteduser');
         let greeted = clear.rows
-
-        console.log(greeted)
         let erase = await greetingsInstance.resetBn()
 
         res.render('Greeted', {
