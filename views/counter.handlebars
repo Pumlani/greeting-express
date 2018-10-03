@@ -1,11 +1,17 @@
-<div class="row">
-    <form action="/" method="get">
+<div class="greetedperson">
 
-        <h2> The Greeted Name </h2>
+    <h2> The Greeted Name </h2>
 
-        <button class="button-primary  HomeBtn" type="submit" name="button"><strong>Back</strong></button>
+    <div class="row">
+        <div class="col-10">
 
-        Hello there, {{counter.username}} has been greeted {{counter.counter}} times!
+            <form action="/" method="get">
+                <button class="button-primary  HomeBtn" type="submit" name="button"><strong>Back</strong></button>
 
-    </form>
+                <p> Hello there, {{counter.username}} has been greeted {{counter.counter}} times!</p>
+
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
 </div>

@@ -1,66 +1,63 @@
-body
+body{
+text-align: center;
+background-color: grey;
+}
+h2
 {
-  width: 100%;
-  font-family: "Helvetica Neue",Arial, sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  background-color:greenyellow;
-
+  text-align: center;
 }
 
-*
+.container
 {
-  padding: 0;
-  margin: 0;
-}
+  position: absolute;
+  right: 0;
+  left:0;
+  top: 0;
+  bottom: 0;
+  margin: 10%;
+  
 
-.MyCounter
-{
-  color: bisque;
 }
 .takesText
 {
-  font-size: 20px;
-  text-align: center;
-  margin-top: 230px;
-  margin-left: 500px;
+  margin-top:40px;
+  margin-bottom: 5px;
 }
-.MyRadioBtn
+.radioBtn
 {
-  margin-top: 23px;
-  margin-left: 500px;
-  color: blanchedalmond;
+  margin: 1px;
 }
 .button
 {
     margin-top:30px;
     margin-left: 440px;
 }
-#buttonOne
+.button-primary
 {
-  background: aqua;
-  border-radius: 40px;
-  height: 40px;
-  width: 60px;
-  /* margin-left: 440px; */
+    /* border: 1px solid white; */
+    padding: 10px 20px;
+    color:blue;
+    text-decoration: none;
+    margin-right: 5px;
+    font-size: 13px;
+    text-transform: uppercase;
 }
-#buttonTwo
+.HomeBtn
 {
-  background: red;
-  border-radius: 40px;
-  height: 40px;
-  width: 60px;
-  /* margin-top: 0px;
-  margin-left:440px; */
+  border-radius: 20%;
+  display: inline-block;
+  
 }
-h2
+.eraseBtn
 {
-  float: center;
-  margin: 10px;
-  color: blue;
-  margin-left:440px;
+  border-radius: 20%;
+  display: inline-block;
+  
 }
-.MyErrorMsg
-{
-  color: red;
+p{
+  text-align: center;
+ 
+}
+table {
+  display: inline-table
 }

@@ -1,30 +1,33 @@
 <div class="row">
-    <form action="/" method="get">
+    <div class="col-2">
+        <form action="/" method="get">
 
-        <h2> Greeted Names </h2>
+            <h2> Greeted Names </h2>
 
-        <button class="button-primary  HomeBtn" type="submit" name="button"><strong>Back</strong></button>
-    </form>
+            <button class="button-primary  HomeBtn" type="submit" name="button"><strong>Back</strong></button>
+        </form>
 
-    <form action="clear" method="post">
-        <button class="button-primary  eraseBtn" type="submit" name="button"><strong>Clear</strong></button>
+        <form action="clear" method="post">
+            <button class="button-primary  eraseBtn" type="submit" name="button"><strong>Clear</strong></button>
+    </div>
 
-        <table>
-            <tr>
-                <th>Names</th>
-                <th></th>
-                <th>Times</th>
-            </tr>
 
-            {{#each greeted}}
-            <tr>
-                <td><a href='/counter/{{username}}'>{{username}}</a></td>
-                <td></td>
-                <td>{{counter}}</td>
-            </tr>
-            {{/each}}
+    <table>
+        <tr>
+            <th>Names</th>
+            <th></th>
+            <th>Times</th>
+        </tr>
 
-        </table>
+        {{#each greeted}}
+        <tr>
+            <td><a href='/counter/{{username}}'>{{username}}</a></td>
+            <td></td>
+            <td>{{counter}}</td>
+        </tr>
+        {{/each}}
+
+    </table>
     </form>
 
 </div>

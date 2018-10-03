@@ -2,15 +2,25 @@
 <html>
 
 <body>
-    <div class="grid">
-        <form action="/greetings" method="POST">
+    <div class="container">
 
-            <div class="MyTextbox">
+        <div class="row">
 
-                <input type="text" name="textBox" placeholder="  Please enter a name" class="takesText">
+            <div class="col-10">
+                <form action="/greetings" method="POST">
+
+                    <div class="MyTextbox">
+
+                        <input type="text" name="textBox" placeholder="  Please enter a name" class="takesText">
+
+                    </div>
             </div>
+            <button class="button-primary  greetBtn" id="buttonOne" type="submit" name="button"><strong>GREET</strong></button>
 
-            <div class="MyRadioBtn">
+        </div>
+
+        <div class="row">
+            <div class="radioBtn">
 
                 {{!-- <input type="radio" name="language" class="languageRadio" value="english">
                 <span class="label-body">English</span> --}}
@@ -18,52 +28,60 @@
                 <span class="label-body">IsiXhosa</span>
                 <input type="radio" name="language" class="languageRadio" value="afrikaans">
                 <span class="label-body">Afrikaans</span>
-                <input type="radio" name="language" class="languageRadio" value="seSotho">
-                <span class="label-body">seSotho</span>
                 <input type="radio" name="language" class="languageRadio" value="english">
                 <span class="label-body">English</span>
             </div>
-            <button class="button-primary  greetBtn" id="buttonOne" type="submit" name="button"><strong>GREET</strong></button>
-        </form>
-        <div class="MyDisplay">
-
-            <h2 class="displayOut"><span>{{greet}}</span></h2>
         </div>
-
-        <div class="MyTableLink">
-
-            <table>
-                <tr>
-                    <td>
-                        <a href="/greeted">Our Names</a>
-                    </td>
-                    <td>
-                        <span class="ViewCount">{{greeted.names}}</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="MyCounter">
-            <div>Counter : <span id="counting">{{count}}</span> </div>
-        </div>
-
-        <form action="/resetBn" method="POST">
-
-            <div class="MyResetBtn">
-                <button class="button-primary  resetBtn" id="buttonTwo" type="submit" name="button"><strong>RESET</strong></button>
-            </div>
-
         </form>
 
-        <div class="MyErrorMsg">
-            {{#if messages.info}}
-            <div class="entry" id="errorInfo">
-                <p>
-                    {{messages.info}}
-                </p>
+        <div class="row">
+
+            <div class="MyDisplay">
+
+                <h2 class="displayOut"><span>{{greet}}</span></h2>
             </div>
-            {{/if}}
+
+        </div>
+        <div class="row">
+
+            <div class="MyTableLink">
+
+                <table>
+                    <tr>
+                        <td>
+                            <a href="/greeted">Our Names</a>
+                        </td>
+                        <td>
+                            <span class="ViewCount">{{greeted.names}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <form action="/resetBn" method="POST">
+
+                <div class="MyResetBtn">
+                    <div>Counter : <span id="counting">{{count}}</span> </div>
+                    <button class="button-primary  resetBtn" id="buttonTwo" type="submit" name="button"><strong>RESET</strong></button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+
+                <div class="MyErrorMsg">
+                    {{#if messages.info}}
+                    <div class="entry" id="errorInfo">
+                        <p>
+                            {{messages.info}}
+                        </p>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+
         </div>
 
 
