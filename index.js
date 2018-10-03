@@ -9,7 +9,6 @@ let greetFactory = require('./greetFactory.js');
 const app = express();
 const Pool = pg.Pool;
 
-
 // should we use a SSL connection
 let useSSL = false;
 let local = process.env.LOCAL || false;
@@ -82,7 +81,6 @@ app.get('/counter/:name', async function (req, res, next) {
         res.render('counter', {
             counter
         });
-
 
     } catch (error) {
         next(error);
