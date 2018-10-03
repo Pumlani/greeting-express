@@ -4,8 +4,8 @@ node_js:
    - "8.9.4"
 
 env:
-     - DATABASE_URL=postgresql://postgres@localhost:5432/greetingsData
+     - DATABASE_URL=postgresql://postgres@localhost:5432/greetingsdata
          
 before_script:
-  - psql -c 'create database greetingsData;' -U postgres
-  - psql -U postgres -d greetingsData -a -f database.sql 
+  - psql -c 'create database greetingsdata;' -U postgres
+  - psql -U postgres -d greetingsdata -a -f database.sql 
