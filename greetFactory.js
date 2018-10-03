@@ -18,11 +18,9 @@ module.exports = function (pool) {
         await pool.query('UPDATE greeteduser SET counter = counter+1 WHERE username=$1', [name]);
         // console.log("after update");
       }
-
       if (language === 'xhosa') {
         return 'Molo ' + name
       }
-
       if (language === 'english') {
         return 'Hello ' + name
       }
