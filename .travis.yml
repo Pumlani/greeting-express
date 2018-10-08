@@ -1,10 +1,10 @@
-        language: node_js
+language: node_js
 
 env:
-     - DATABASE_URL=postgresql://postgres@localhost:5432/greetings_data
+  - DATABASE_URL=postgresql://postgres@localhost:5432/greetings_data
      
 node_js:  
-        - "8.9.4"
+  - "8.9.4"
         
 before_script:
   - psql -c 'create database  greetings_data;' -U postgres
